@@ -5,5 +5,10 @@
 * 第二章 多线程
     * [第一节 Java并发编程基础](thread/Java并发编程基础.md)
 * 第三章 Mybatis框架使用
+    * [代理模式](mybatis/代理设计模式.md)
+    * [Mybatis原理](mybatis/Mybatis原理.md)
     * [Myatis入门](mybatis/Mybatis入门Demo.md)
+    * Mybatis的配置文件
+        * [全局配置文件](mybatis/Mybatis的全局配置文件.md)
+        * [Sql映射文件](mybatis/Sql映射文件.md)
 
