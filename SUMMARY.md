@@ -21,4 +21,6 @@
     * [自定义TypeHandler处理枚举](mybatis/自定义TypeHandler处理枚举.md)
     * [Mybatis学习代码库](https://github.com/sunwjblog/CodeRepository.git)
     * [Mybatis常见面试题](mybatis/Mybatis常见面试题.md)
+* 第四章 开发工具的使用
+    * [Git版本控制工具学习笔记](devtools/Git学习笔记.md)
 
