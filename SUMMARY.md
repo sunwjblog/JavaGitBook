@@ -23,4 +23,10 @@
     * [Mybatis常见面试题](mybatis/Mybatis常见面试题.md)
 * 第四章 开发工具的使用
     * [Git版本控制工具学习笔记](devtools/Git学习笔记.md)
+* 第五章 中间件
+    * 缓存Redis
+        * [常用五大数据类型](redis/常用五大数据类型.md)
+        * [Redis配置文件介绍](redis/Redis配置文件介绍.md)
+    * RPC
+        * [Dubbo](dubbo/Dubbo.md)
 

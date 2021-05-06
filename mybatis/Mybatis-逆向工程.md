@@ -24,6 +24,8 @@
   * targetRuntime="MyBatis3"可以生成带条件的增删改查
   * targetRuntime="MyBatis3Simple"可以生成基本的增删改查，如果再次生成，建议将之前生成的数据删除，避免xml向后追加内容出现问题。
 
+#### 普通Java工程下的配置启动生成步骤
+
 #### MBG配置文件
 
 ```xml
@@ -133,4 +135,80 @@ public void testMyBatis3() throws IOException{
 	}
 	
 ```
+
+#### Maven工程下的逆向工程配置
+
+##### 创建一个maven工程
+
+##### 在resources文件夹下创建一个genratorCofig.xml文件
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+
+	<!-- 
+		targetRuntime="MyBatis3Simple":生成简单版的CRUD
+		MyBatis3:豪华版
+	
+	 -->
+  <context id="DB2Tables" targetRuntime="MyBatis3">
+  	<!-- jdbcConnection：指定如何连接到目标数据库 -->
+    <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+        connectionURL="jdbc:mysql://localhost:3306/asiainfo?characterEncoding=utf8"
+        userId="root"
+        password="1992Sunwj@">
+    </jdbcConnection>
+
+	<!--  -->
+    <javaTypeResolver >
+      <property name="forceBigDecimals" value="false" />
+    </javaTypeResolver>
+
+	<!-- javaModelGenerator：指定javaBean的生成策略 
+	targetPackage="test.model"：目标包名
+	targetProject="/MBGTestProject/src"：目标工程
+	-->
+    <javaModelGenerator targetPackage="com.sunwj.mybatis.bean"
+    		targetProject="./src/main/java">
+      <property name="enableSubPackages" value="true" />
+      <property name="trimStrings" value="true" />
+    </javaModelGenerator>
+
+	<!-- sqlMapGenerator：sql映射生成策略： -->
+    <sqlMapGenerator targetPackage="mapper"
+    	targetProject="./src/main/resources">
+      <property name="enableSubPackages" value="true" />
+    </sqlMapGenerator>
+
+	<!-- javaClientGenerator:指定mapper接口所在的位置 -->
+    <javaClientGenerator type="XMLMAPPER" targetPackage="com.sunwj.mybatis.mapper"
+    	targetProject="./src/main/java">
+      <property name="enableSubPackages" value="true" />
+    </javaClientGenerator>
+
+	<!-- 指定要逆向分析哪些表：根据表要创建javaBean -->
+    <table tableName="tbl_dept" domainObjectName="DepartmentExample"></table>
+    <table tableName="tbl_employee" domainObjectName="EmployeeExample"></table>
+  </context>
+</generatorConfiguration>
+
+```
+
+##### 配置maven启动命令
+
+![](/Users/sunwj/Documents/GitHub/JavaGitBook/image/mybatis逆向工程.png)
+
+* 点击+号选择maven
+* 自定义name
+* 选择项目路径
+* 输入逆向工程的命令 mybatis-generator:generate -e
+
+##### 启动maven工程即可
+
+执行完之后
+
+![](/Users/sunwj/Documents/GitHub/JavaGitBook/image/mybatis逆向工程结构.png)
 
