@@ -168,3 +168,100 @@ Dubbo可以帮助我们解决什么问题？
 
 #### Dubbo实战
 
+
+
+
+
+#### Dubbo配置
+
+![](/Users/sunwj/Documents/GitHub/JavaGitBook/image/dubbo配置.png)
+
+* ##### 配置原则
+
+  1. JVM启动 -D 参数优先，这样可以使用户在部署和启动时进行参数重写，比如在启动时需要改变协议的端口。
+
+  2. XML次之，如果在XML中有配置，则dubbo.properties中的相应配置项无效。
+
+  3. Properties最后，相当于缺省值，只有XML没有配置时，dubbo.properties的相应配置项才会生效，通常用于共享公共配置，比如应用名。
+
+* ##### 重试次数
+
+  失败自动切换，当出现失败，重试其他服务器，但重试会带来更长延迟，可通过reties="2"来设置重试次数（不含第一次）。
+
+  ```xml
+  重试次数配置如下：
+  <dubbo:service retries="2" />
+  或
+  <dubbo:reference retries="2" />
+  或
+  <dubbo:reference>
+      <dubbo:method name="findFoo" retries="2" />
+  </dubbo:reference>
+  ```
+
+* ##### 超时时间
+
+  由于网络或服务端不可靠，会导致调用出现一种不确定的中间状态（超时），为了避免超时导致客户端资源（线程）挂起耗尽，必须设置超时时间。
+
+  1. Dubbo消费端
+
+     ```xml
+     全局超时配置
+     <dubbo:consumer timeout="5000" />
+     
+     指定接口以及特定方法超时配置
+     <dubbo:reference interface="com.foo.BarService" timeout="2000">
+         <dubbo:method name="sayHello" timeout="3000" />
+     </dubbo:reference>
+     ```
+
+  2. Dubbo服务端
+
+     ```xml
+     全局超时配置
+     <dubbo:provider timeout="5000" />
+     
+     指定接口以及特定方法超时配置
+     <dubbo:provider interface="com.foo.BarService" timeout="2000">
+         <dubbo:method name="sayHello" timeout="3000" />
+     </dubbo:provider>
+     ```
+
+  3. 配置原则
+
+     dubbo推荐在Provider上尽量多配置Consumer端属性：
+
+     ```
+     1、作服务的提供者，比服务使用方更清楚服务性能参数，如调用的超时时间，合理的重试次数，等等
+     2、在Provider配置后，Consumer不配置则会使用Provider的配置值，即Provider配置可以作为Consumer的缺省值。否则，Consumer会使用Consumer端的全局设置，这对于Provider不可控的，并且往往是不合理的
+     ```
+
+     配置的覆盖规则：
+
+     1. 方法级别配置优于接口级别，即小Scope优先。
+
+     2. Consumer端配置优于 Provider 配置 优于 全局配置
+
+     3. 最后是Dubbo Hard Code的配置值
+
+        ![](/Users/sunwj/Documents/GitHub/JavaGitBook/image/Dubbo配置级别.png)
+
+  #### Dubbo的高可用
+
+  1. ##### zookeeper宕机与dubbo直连
+
+     zookeeper注册中心宕机，还可以消费dubbo暴露的服务
+
+     原因：
+
+     ```
+     健壮性
+     1、监控中心宕掉不影响使用，只是丢失部分采样数据
+     2、数据库宕掉后，注册中心仍能通过缓存提供服务列表查询，但不能注册新服务
+     3、注册中心对等集群，任意一台宕掉后，将自动切换到另一台
+     4、注册中心全部宕掉后，服务提供者和服务消费者仍能通过本地缓存通讯
+     5、服务提供者无状态，任意一台宕掉后，不影响使用
+     6、服务提供者全部宕掉后，服务消费者应用将无法使用，并无限次重连等待服务提供者恢复
+     ```
+
+     
