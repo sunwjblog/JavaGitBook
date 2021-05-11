@@ -28,6 +28,7 @@
     * 缓存Redis
         * [常用五大数据类型](redis/常用五大数据类型.md)
         * [Redis配置文件介绍](redis/Redis配置文件介绍.md)
+        * [Redis分布式锁](redis/Redis分布式锁.md)
     * RPC
         * [Dubbo](dubbo/Dubbo.md)
 * Docker
