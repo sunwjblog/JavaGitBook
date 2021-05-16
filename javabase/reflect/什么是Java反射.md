@@ -52,7 +52,7 @@ public class DebugInvocationHandler implements InvocationHandler {
 * ##### 通过Class.forName()传入类的路径获取
 
   ```
-  Class alunbarClass1 = Class.forName("cn.javaguide.TargetObject");
+  Class alunbarClass1 = Class.forName("cn.sunwj.TargetObject");
   ```
 
 * ##### 通过对象实例 instance.getClass()获取
@@ -65,7 +65,7 @@ public class DebugInvocationHandler implements InvocationHandler {
 * ##### 通过类加载器xxxClassLoader.loadClass()传入类路径获取
 
   ```
-  class clazz = ClassLoader.LoadClass("cn.javaguide.TargetObject");
+  class clazz = ClassLoader.LoadClass("cn.sunwj.TargetObject");
   ```
 
   通过类加载器获取 Class 对象不会进行初始化，意味着不进行包括初始化等一些列步骤，静态块和静态对象不会得到执行

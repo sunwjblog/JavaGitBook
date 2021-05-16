@@ -4,6 +4,7 @@
 * 第一章 Java基础
     * [Java反射](javabase/reflect/什么是Java反射.md)
     * [计算机网络知识](javabase/network/计算机网络知识点.md)
+    * [JVM知识点](javabase/jvm/JVM知识点.md)
 * 第二章 多线程
     * [第一节 Java并发编程基础](thread/Java并发编程基础.md)
     * [第二节 线程间通信](thread/线程间通信.md)
