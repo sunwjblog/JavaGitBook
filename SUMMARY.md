@@ -4,6 +4,7 @@
 * Java基础
     * [Java反射](javabase/reflect/什么是Java反射.md)
     * [计算机网络知识](javabase/network/计算机网络知识点.md)
+    * [代理模式总结](javabase/proxy/代理模式总结.md)
     * JVM
         * [JVM基础知识点](javabase/jvm/JVM知识点.md)
         * [JVM垃圾回收](javabase/jvm/JVM垃圾回收机制.md)
@@ -47,6 +48,8 @@
     * [SpringMVC的执行过程](spring/SpringMVC.md)
     * [Spring事务](spring/Spring事务学习.md)
 * 数据库
+    * [MySQL数据库索引总结](database/mysql/数据库索引学习总结.md)
 * 读书笔记
-    * [Clean Code](readbook/CleanCode读书笔记.md)
+    * [架构整洁之道](readbook/架构整洁之道读书笔记.md)
+* [简历模版](resume/简.md)
 
