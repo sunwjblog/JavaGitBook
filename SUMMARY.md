@@ -49,7 +49,9 @@
     * [Spring事务](spring/Spring事务学习.md)
 * 数据库
     * [MySQL数据库索引总结](database/mysql/数据库索引学习总结.md)
+    * [MySQL的可重复读](database/mysql/MySQL如何实现可重复读.md)
+    * [MySQL的三大日志-binlog、redo log和undo log](database/mysql/MySQL的三大日志.md)
 * 读书笔记
-    * [架构整洁之道](readbook/架构整洁之道读书笔记.md)
+    * [架构整洁之道-读书笔记](readbook/架构整洁之道-读书笔记.md)
 * [简历模版](resume/简.md)
 
