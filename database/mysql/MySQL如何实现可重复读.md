@@ -124,7 +124,7 @@ InnoDB 肯定不允许这种情况的发生，事务B在执行更新语句时，
 
 ![](/Users/sunwj/Documents/GitHub/JavaGitBook/image/可重复读的实现原理4.png)
 
-## 快照
+## 快照读和当前读
 
 ### 什么是快照读和当前读？
 
