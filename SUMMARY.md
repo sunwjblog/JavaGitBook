@@ -12,6 +12,7 @@
         * [Java并发编程基础](thread/Java并发编程基础.md)
         * [线程间通信](thread/线程间通信.md)
         * [Java线程池](thread/线程池学习.md)
+    * [UML类图学习](javabase/uml/UML类学习总结.md)
 * Mybatis框架使用
     * [代理模式](mybatis/代理设计模式.md)
     * [Mybatis原理](mybatis/Mybatis原理.md)
@@ -58,5 +59,11 @@
 * 读书笔记
     * [架构整洁之道-读书笔记](readbook/架构整洁之道-读书笔记.md)
     * [深入浅出的SpringBoot 2.x](readbook/深入浅出的SpringBoot 2.x.md)
+* Linux常用命令
+    * [grep命令](linux/grep命令总结.md)
+    * [find命令](linux/find命令总结.md)
+    * [sed命令](linux/sed命令总结.md)
+    * [awk命令](linux/awk命令总结.md)
+    * [其他常用命令](linux/其他常用命令总结.md)
 * [简历模版](resume/简.md)
 
