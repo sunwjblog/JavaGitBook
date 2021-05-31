@@ -112,7 +112,7 @@ Class B {
 
 因为`PROPAGATION_REQUIRED_NEW `表示当前方法必须运行在它自己的事务中。不管当前事务是否存在，它都会启动一个新的事务相互独立，互不干扰。如果存在当前事务，在该方法执行期间，当前事务会被挂起。
 
-3、如果我们上面的`bMethod()，bMethod2()`使用`PROPAGATION_NESTED`事务传播行为修饰，`aMethod`还是用`PROPAGATION_REQUIRED`修饰的话，这样调用会出现什么情况？
+3、如果我们下面的`bMethod()，bMethod2()`使用`PROPAGATION_NESTED`事务传播行为修饰，`aMethod`还是用`PROPAGATION_REQUIRED`修饰的话，这样调用会出现什么情况？
 
 如代码
 
