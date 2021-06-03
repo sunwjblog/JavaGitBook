@@ -69,4 +69,5 @@
     * [awk命令](linux/awk命令总结.md)
     * [其他常用命令](linux/其他常用命令总结.md)
 * [简历模版](resume/简.md)
+* [面试问题梳理](resume/面试问题梳理.md)
 
