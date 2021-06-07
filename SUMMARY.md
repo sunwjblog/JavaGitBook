@@ -80,6 +80,10 @@
         * [原型模式](designpattern/creationalpattern/ProtorypePattern.md)
     * 结构型模式（Structural Pattern）
     * 行为型模式（Behavioral Pattern）
+* Java中的常用算法
+    * [二分查找算法](javaalgorithm/二分查找算法.md)
+    * [冒泡排序算法](javaalgorithm/冒泡排序算法.md)
+    * [插入排序算法](javaalgorithm/插入排序算法.md)
 * [简历模版](resume/简.md)
 * [面试问题梳理](resume/面试问题梳理.md)
 
