@@ -70,6 +70,16 @@
     * [sed命令](linux/sed命令总结.md)
     * [awk命令](linux/awk命令总结.md)
     * [其他常用命令](linux/其他常用命令总结.md)
+* 设计模式
+    * [设计原则介绍](designpattern/设计原则.md)
+    * 创建型模式（Creational Pattern）
+        * [工厂模式](designpattern/creationalpattern/FactoryPattern.md)
+        * [抽象工厂模式](designpattern/creationalpattern/AbstractFactoryPattern.md)
+        * [单例模式](designpattern/creationalpattern/SingletonPattern.md)
+        * [建造者模式](designpattern/creationalpattern/BuilderPattern.md)
+        * [原型模式](designpattern/creationalpattern/ProtorypePattern.md)
+    * 结构型模式（Structural Pattern）
+    * 行为型模式（Behavioral Pattern）
 * [简历模版](resume/简.md)
 * [面试问题梳理](resume/面试问题梳理.md)
 
