@@ -8,6 +8,8 @@
     * JVM
         * [JVM基础知识点](javabase/jvm/JVM知识点.md)
         * [JVM垃圾回收](javabase/jvm/JVM垃圾回收机制.md)
+        * [类加载过程](javabase/jvm/类加载过程.md)
+        * [类加载器](javabase/jvm/类加载器.md)
     * 多线程
         * [Java并发编程基础](thread/Java并发编程基础.md)
         * [线程间通信](thread/线程间通信.md)
