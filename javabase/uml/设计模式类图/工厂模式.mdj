@@ -17,7 +17,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFElm6BOFNpegQ="
 					},
-					"name": "Main",
+					"name": "FactoryPatternUML",
 					"defaultDiagram": true,
 					"ownedViews": [
 						{
@@ -15699,7 +15699,7 @@
 					"_parent": {
 						"$ref": "AAAAAAF58WFRlAZ/oKo="
 					},
-					"name": "ClassDiagram1",
+					"name": "AbstractFactoryPatternUML",
 					"ownedViews": [
 						{
 							"_type": "UMLClassView",
