@@ -12,3 +12,133 @@
 
 ### 代码
 
+* ##### 抽象工厂类 AbstractFactory
+
+```java
+public abstract class AbstractFactory {
+
+    public abstract Phone createPhone(String brand);
+
+    public abstract Computer createComputer(String brand);
+}
+
+```
+
+* ##### 创建两条产品线 ComputerFactory 和 PhoneFactory
+
+```java
+public class ComputerFactory extends AbstractFactory {
+
+    @Override
+    public Phone createPhone(String brand) {
+        return null;
+    }
+
+    @Override
+    public Computer createComputer(String brand) {
+        if ("HuaWei".equals(brand))
+            return new HuaWeiComputer();
+        else if ("Apple".equals(brand))
+            return new ComputerApple();
+        else
+            return null;
+    }
+}
+
+```
+
+```java
+public class PhoneFactory extends AbstractFactory {
+
+    @Override
+    public Phone createPhone(String brand) {
+
+        if ("HuaWei".equals(brand))
+            return new HuaWeiPhone();
+        else if ("Apple".equals(brand))
+            return new ApplePhone();
+        else
+            return null;
+    }
+
+    @Override
+    public Computer createComputer(String brand) {
+        return null;
+    }
+}
+```
+
+* ##### 创建生产产品的接口 Computer 和 Phone
+
+```java
+public interface Computer {
+
+    String intenmet();
+}
+```
+
+```java
+public interface Phone {
+
+    String call();
+}
+```
+
+* ##### 不同产品的实例
+
+```java
+public class HuaWeiPhone implements Phone{
+    @Override
+    public String call() {
+        return "this is a HuaWei Phone";
+    }
+}
+
+public class ApplePhone implements Phone{
+    @Override
+    public String call() {
+        return "this is a Apple Phone";
+    }
+}
+
+```
+
+```java
+public class ComputerApple implements Computer{
+    @Override
+    public String intenmet() {
+        return "this is a Apple Computer";
+    }
+}
+
+public class HuaWeiComputer implements Computer{
+    @Override
+    public String intenmet() {
+        return "this is a HuaWei Computer";
+    }
+}
+
+```
+
+* 测试代码
+
+```java
+public class MainTest {
+
+    public static void main(String[] args) {
+
+        AbstractFactory phoneFactory = new PhoneFactory();
+        Phone applePhone = phoneFactory.createPhone("Apple");
+        Phone huaWeiPhone = phoneFactory.createPhone("HuaWei");
+        System.out.println(applePhone.call());
+        System.out.println(huaWeiPhone.call());
+
+        AbstractFactory computerFactory = new ComputerFactory();
+        Computer appleComputer = computerFactory.createComputer("Apple");
+        Computer huaweiComputer = computerFactory.createComputer("HuaWei");
+        System.out.println(appleComputer.intenmet());
+        System.out.println(huaweiComputer.intenmet());
+    }
+}
+```
+
