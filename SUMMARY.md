@@ -15,6 +15,32 @@
         * [线程间通信](thread/线程间通信.md)
         * [Java线程池](thread/线程池学习.md)
     * [UML类图学习](javabase/uml/UML类学习总结.md)
+* 数据库
+    * [MySQL数据库索引总结](database/mysql/数据库索引学习总结.md)
+    * [MySQL的可重复读](database/mysql/MySQL如何实现可重复读.md)
+    * [MySQL的三大日志-binlog、redo log和undo log](database/mysql/MySQL的三大日志.md)
+    * [MVCC](database/mysql/MVCC原理.md)
+* 中间件
+    * 缓存Redis
+        * [常用五大数据类型](redis/常用五大数据类型.md)
+        * [Redis配置文件介绍](redis/Redis配置文件介绍.md)
+        * [Redis分布式锁](redis/Redis分布式锁.md)
+        * [Redis常见面试题](redis/Redis常见面试题.md)
+        * [Redis安装mac](redis/Redis安装.md)
+    * RPC
+        * [Dubbo](dubbo/Dubbo.md)
+        * [BIO、NIO和AIO](dubbo/BIO、NIO和AIO.md)
+    * Zookeeper
+        * [zookeeper基础](zookeeper/zookeeper基础知识点.md)
+        * [zookeeper安装](zookeeper/zookeeper安装.md)
+* Spring&Spring Boot
+    * [SpringMVC的执行过程](spring/SpringMVC.md)
+    * [Spring事务](spring/Spring事务学习.md)
+    * [SpringIoC](spring/Spring IoC学习总结.md)
+    * [SpringAOP](spring/SpringAOP学习总结.md)
+    * [Spring生命周期](spring/Spring生命周期.md)
+    * [Spring循环依赖](spring/Spring循环依赖.md)
+    * [Spring作用域](spring/Spring作用域.md)
 * Mybatis框架使用
     * [代理模式](mybatis/代理设计模式.md)
     * [Mybatis原理](mybatis/Mybatis原理.md)
@@ -32,44 +58,10 @@
     * [Mybatis学习代码库](https://github.com/sunwjblog/CodeRepository.git)
     * [Mybatis常见面试题](mybatis/Mybatis常见面试题.md)
     * [Mybatis遇到的问题](mybatis/Mybatis遇到的问题.md)
-* 开发工具的使用
-    * [Git版本控制工具学习笔记](devtools/Git学习笔记.md)
-* 中间件
-    * 缓存Redis
-        * [常用五大数据类型](redis/常用五大数据类型.md)
-        * [Redis配置文件介绍](redis/Redis配置文件介绍.md)
-        * [Redis分布式锁](redis/Redis分布式锁.md)
-        * [Redis常见面试题](redis/Redis常见面试题.md)
-        * [Redis安装mac](redis/Redis安装.md)
-    * RPC
-        * [Dubbo](dubbo/Dubbo.md)
-        * [BIO、NIO和AIO](dubbo/BIO、NIO和AIO.md)
-    * Zookeeper
-        * [zookeeper基础](zookeeper/zookeeper基础知识点.md)
-        * [zookeeper安装](zookeeper/zookeeper安装.md)
-* Docker
-    * [Docker入门](docker/Docker入门.md)
-* Spring&Spring Boot
-    * [SpringMVC的执行过程](spring/SpringMVC.md)
-    * [Spring事务](spring/Spring事务学习.md)
-    * [SpringIoC](spring/Spring IoC学习总结.md)
-    * [SpringAOP](spring/SpringAOP学习总结.md)
-    * [Spring生命周期](spring/Spring生命周期.md)
-    * [Spring循环依赖](spring/Spring循环依赖.md)
-    * [Spring作用域](spring/Spring作用域.md)
-* 数据库
-    * [MySQL数据库索引总结](database/mysql/数据库索引学习总结.md)
-    * [MySQL的可重复读](database/mysql/MySQL如何实现可重复读.md)
-    * [MySQL的三大日志-binlog、redo log和undo log](database/mysql/MySQL的三大日志.md)
-* 读书笔记
-    * [架构整洁之道-读书笔记](readbook/架构整洁之道-读书笔记.md)
-    * [深入浅出的SpringBoot 2.x](readbook/深入浅出的SpringBoot 2.x.md)
-* Linux常用命令
-    * [grep命令](linux/grep命令总结.md)
-    * [find命令](linux/find命令总结.md)
-    * [sed命令](linux/sed命令总结.md)
-    * [awk命令](linux/awk命令总结.md)
-    * [其他常用命令](linux/其他常用命令总结.md)
+* Java中的常用算法
+    * [二分查找算法](javaalgorithm/二分查找算法.md)
+    * [冒泡排序算法](javaalgorithm/冒泡排序算法.md)
+    * [插入排序算法](javaalgorithm/插入排序算法.md)
 * 设计模式
     * [设计原则介绍](designpattern/设计原则.md)
     * 创建型模式（Creational Pattern）
@@ -99,10 +91,19 @@
         * [策略模式](designpattern/behavioralpattern/StrategyPattern.md)
         * [模版模式](designpattern/behavioralpattern/TemplatePattern.md)
         * [访问者模式](designpattern/behavioralpattern/VisitorPattern)
-* Java中的常用算法
-    * [二分查找算法](javaalgorithm/二分查找算法.md)
-    * [冒泡排序算法](javaalgorithm/冒泡排序算法.md)
-    * [插入排序算法](javaalgorithm/插入排序算法.md)
+* Linux常用命令
+    * [grep命令](linux/grep命令总结.md)
+    * [find命令](linux/find命令总结.md)
+    * [sed命令](linux/sed命令总结.md)
+    * [awk命令](linux/awk命令总结.md)
+    * [其他常用命令](linux/其他常用命令总结.md)
+* 开发工具的使用
+    * [Git版本控制工具学习笔记](devtools/Git学习笔记.md)
+* Docker
+    * [Docker入门](docker/Docker入门.md)
+* 读书笔记
+    * [架构整洁之道-读书笔记](readbook/架构整洁之道-读书笔记.md)
+    * [深入浅出的SpringBoot 2.x](readbook/深入浅出的SpringBoot 2.x.md)
 * [简历模版](resume/简.md)
 * [面试问题梳理](resume/面试问题梳理.md)
 
