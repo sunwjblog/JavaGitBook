@@ -190,7 +190,7 @@
 
 1. [架构整洁之道-读书笔记](readbook/架构整洁之道-读书笔记.md)
 
-2. [深入浅出的SpringBoot 2.x](readbook/深入浅出的SpringBoot 2.x.md)
+2. [深入浅出的SpringBoot 2.x](readbook/深入浅出的SpringBoot2.x.md)
 
 ### 简历
 
