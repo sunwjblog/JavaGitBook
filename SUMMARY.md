@@ -27,7 +27,6 @@
     * 结构型模式
         * [适配器模式](designpattern/structuralpattern/AdapterPattern.md)
         * [桥接模式](designpattern/structuralpattern/BridgePattern.md)
-        * [过滤器模式](designpattern/structuralpattern/FilterCriteriaPattern.md)
         * [组合模式](designpattern/structuralpattern/CompositePattern.md)
         * [装饰器模式](designpattern/structuralpattern/DecoratorPattern.md)
         * [外观模式](designpattern/structuralpattern/FacadePattern.md)
@@ -46,7 +45,7 @@
         * [模版模式](designpattern/behavioralpattern/TemplatePattern.md)
         * [访问者模式](designpattern/behavioralpattern/VisitorPattern)
 * Java新特性 JDK1.8
-    * 
+  *
 * 计算机网络
     * [计算机网络知识](javabase/network/计算机网络知识点.md)
 * SHELL
@@ -78,6 +77,8 @@
     * Zookeeper
         * [zookeeper基础](zookeeper/zookeeper基础知识点.md)
         * [zookeeper安装](zookeeper/zookeeper安装.md)
+    * KafKa
+        * [Kafka入门](kafka/Kafka入门知识.md)
 * 框架
     * Spring&Spring Boot
         * [SpringMVC的执行过程](spring/SpringMVC.md)
