@@ -45,9 +45,10 @@
         * [模版模式](designpattern/behavioralpattern/TemplatePattern.md)
         * [访问者模式](designpattern/behavioralpattern/VisitorPattern)
 * Java新特性 JDK1.8
-  *
+*
 * 计算机网络
     * [计算机网络知识](javabase/network/计算机网络知识点.md)
+    * []()
 * SHELL
     * [grep命令](linux/grep命令总结.md)
     * [find命令](linux/find命令总结.md)
@@ -114,4 +115,5 @@
 * 简历
     * [简历模版](resume/简.md)
     * [面试问题梳理](resume/面试问题梳理.md)
+    * [反思](resume/think/反思.md)
 
