@@ -2,8 +2,8 @@
 
 * ### Java基础
 
-  * [Java反射](javabase/reflect/什么是Java反射.md)
-  * [代理模式总结](javabase/proxy/代理模式总结.md)
+  * [Java反射](reflect/什么是Java反射.md)
+  * [代理模式总结](proxy/代理模式总结.md)
 
 * ### 容器
 
