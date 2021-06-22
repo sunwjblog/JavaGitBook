@@ -24,9 +24,9 @@ RPC的核心功能可以分为以下几个部分：
 
 * **服务端（服务提供端）** ：提供远程方法的一端。
 
-  ![](/Users/sunwj/Documents/GitHub/JavaGitBook/image/RPC原理.png)
+  ![](../image/RPC原理.png)
 
-  ![](/Users/sunwj/Documents/GitHub/JavaGitBook/image/dubbo原理时序图.png)
+  ![](../image/dubbo原理时序图.png)
 
 整个过程分析：
 
@@ -44,7 +44,7 @@ RPC的核心功能可以分为以下几个部分：
 
 Dubbo官方文档介绍，Dubbo提供了六个核心能力：
 
-![](/Users/sunwj/Documents/GitHub/JavaGitBook/image/Dubbo核心能力.png)
+![](../image/Dubbo核心能力.png)
 
 1. 面向接口代理的高性能RPC调用。
 2. 智能容错和负载均衡。
@@ -55,7 +55,7 @@ Dubbo官方文档介绍，Dubbo提供了六个核心能力：
 
 #### Dubbo的基本概念
 
-![](/Users/sunwj/Documents/GitHub/JavaGitBook/image/Dubbo的组成结构.png)
+![](../image/Dubbo的组成结构.png)
 
 1. ##### 服务提供者（Provider）：暴露服务的服务提供方，服务提供者在启动时，向注册中心注册自己提供的服务。
 
@@ -92,11 +92,11 @@ Dubbo可以帮助我们解决什么问题？
 
 4. ......
 
-   ![](/Users/sunwj/Documents/GitHub/JavaGitBook/image/Dubbo服务治理.png)
+   ![](../image/Dubbo服务治理.png)
 
 #### Dubbo 的工作原理
 
-![](/Users/sunwj/Documents/GitHub/JavaGitBook/image/Dubbo原理图.jpeg)
+![](../image/Dubbo原理图.jpeg)
 
 *左边淡蓝背景的为服务消费方使用的接口，右边淡绿色背景的为服务提供方使用的接口*，位于中轴线上的为双方都用到的接口。
 
@@ -160,11 +160,11 @@ Dubbo可以帮助我们解决什么问题？
 
   缺省用 160 份虚拟节点，如果要修改，请配置 <dubbo:parameter key="hash.nodes" value="320" />
 
-  ![](/Users/sunwj/Documents/GitHub/JavaGitBook/image/DubboHash一致性.png)
+  ![](../image/DubboHash一致性.png)
 
 如图所示，Dubbo这样很容易发生数据倾斜的问题（节点不够分散，大量请求落到同一个节点上），Dubbo为了避免这种数据倾斜的问题，引入了虚拟节点的概念。通过虚拟节点可以让节点更加分散，有效均衡各个节点的请求量。
 
-![](/Users/sunwj/Documents/GitHub/JavaGitBook/image/DubboHash虚拟节点.png)
+![](../image/DubboHash虚拟节点.png)
 
 #### Dubbo实战
 
@@ -174,7 +174,7 @@ Dubbo可以帮助我们解决什么问题？
 
 #### Dubbo配置
 
-![](/Users/sunwj/Documents/GitHub/JavaGitBook/image/dubbo配置.png)
+![](../image/dubbo配置.png)
 
 * ##### 配置原则
 
@@ -244,7 +244,7 @@ Dubbo可以帮助我们解决什么问题？
 
      3. 最后是Dubbo Hard Code的配置值
 
-        ![](/Users/sunwj/Documents/GitHub/JavaGitBook/image/Dubbo配置级别.png)
+        ![](../image/Dubbo配置级别.png)
 
   #### Dubbo的高可用
 

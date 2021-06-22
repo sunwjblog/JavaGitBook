@@ -20,11 +20,11 @@
 
 为什么修改数据后，数据库查询的结果还是之前的数据呢？数据库其实是借助于undo和MVCC来实现的。如图：
 
-![](/Users/sunwj/Documents/GitHub/JavaGitBook/image/MVCC1.png)
+![](../../image/MVCC1.png)
 
 当插入一条数据时，在记录上对应的回滚指针为null，如图所示：
 
-![](/Users/sunwj/Documents/GitHub/JavaGitBook/image/MVCC2.png)
+![](../../image/MVCC2.png)
 
 当更新记录时，将原记录放入Undo表空间中，我们查询看到的未修改的数据就是从Undo表空间中返回的，如果存在多个数据的版本就会构成一个链表。
 
@@ -37,7 +37,7 @@
 
 如图：
 
-![](/Users/sunwj/Documents/GitHub/JavaGitBook/image/可重复读原理2.png)
+![](../../image/可重复读原理2.png)
 
 
 

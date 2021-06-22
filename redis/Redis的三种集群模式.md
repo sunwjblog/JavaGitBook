@@ -10,7 +10,7 @@
 
 ### 主从复制模式
 
-![](/Users/sunwj/Documents/GitHub/JavaGitBook/image/Redis主从复制模式.png)
+![](../image/Redis主从复制模式.png)
 
 #### 主从复制的作用
 
@@ -27,7 +27,7 @@
 
 #### 主从复制原理
 
-![](/Users/sunwj/Documents/GitHub/JavaGitBook/image/Redis主从复制原理.png)
+![](../image/Redis主从复制原理.png)
 
 - 从数据库启动成功后，连接主数据库，发送 SYNC 命令；
 - 主数据库接收到 SYNC 命令后，开始执行 BGSAVE 命令生成 RDB 文件并使用缓冲区记录此后执行的所有写命令；
@@ -60,7 +60,7 @@
 
 哨兵模式是一种特殊的模式，Redis提供了哨兵命令，哨兵是一个独立的进程，作为进程，它会独立运行。其原理是哨兵通过发送命令，等待Redis服务器响应，从而监控运行的多个Redis实例。
 
-![](/Users/sunwj/Documents/GitHub/JavaGitBook/image/Redis哨兵模式.png)
+![](../image/Redis哨兵模式.png)
 
 #### **哨兵模式的作用**
 
@@ -69,7 +69,7 @@
 
 一个哨兵进程对Redis服务器进行监控，也可能会出现问题，为此，我们可以使用多个哨兵进行监控。各个哨兵之间还会进行监控，这样就形成了多哨兵模式。
 
-![](/Users/sunwj/Documents/GitHub/JavaGitBook/image/Redis哨兵模式-多哨兵.png)
+![](../image/Redis哨兵模式-多哨兵.png)
 
 #### **故障切换的过程**
 
@@ -100,7 +100,7 @@
 
 Redis 的哨兵模式基本已经可以实现高可用，读写分离 ，但是在这种模式下每台 Redis 服务器都存储相同的数据，很浪费内存，所以在 redis3.0上加入了 Cluster 集群模式，实现了 Redis 的分布式存储，**也就是说每台 Redis 节点上存储不同的内容**。
 
-![](/Users/sunwj/Documents/GitHub/JavaGitBook/image/Redis-Cluster集群模式.png)
+![](../image/Redis-Cluster集群模式.png)
 
 在这个图中，每一个蓝色的圈都代表着一个 redis 的服务器节点。它们任何两个节点之间都是相互连通的。客户端可以与任何一个节点相连接，然后就可以访问集群中的任何一个节点。对其进行存取和其他操作。
 

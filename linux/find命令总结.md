@@ -8,7 +8,7 @@ find [路径][选项][操作]
 
 ### find选项参数
 
-![](/Users/sunwj/Documents/GitHub/JavaGitBook/image/find选项参数.png)
+![](../image/find选项参数.png)
 
 ### 举例
 

@@ -12,13 +12,13 @@ Git是一个开源的分布式版本控制系统。什么是版本控制呢？�
 
   这样做存在一个很明显的缺点，那就是如果中央服务器的单点故障。如果宕机几个小时，那么在这几个小时内，任何人都无法提交更新，也就无法协同工作。要是中央服务器的磁盘发生故障，又碰巧没有做备份，或者备份不及时，就会有丢失数据的风险。最坏的情况是彻底丢失整个项目的所有历史更改记录。
 
-  ![](/Users/sunwj/Documents/GitHub/JavaGitBook/image/集中式版本控制系统.png)
+  ![](../../image/集中式版本控制系统.png)
 
 * ##### 分布式版本控制系统
 
   分布式版本控制系统的客户端并不只是提取最新版本的文件快照，而是把代码仓库完整地镜像下来。这样的话，任何一处协同工作用的服务器发生故障，事后都可以用任何一个镜像出来的本地仓库恢复。因为每一次的提取操作，实际上都是一次对代码仓库的完整备份。
 
-  ![](/Users/sunwj/Documents/GitHub/JavaGitBook/image/分布式版本控制系统.png)
+  ![](../../image/分布式版本控制系统.png)
 
 ### Git和Svn的区别
 
@@ -76,17 +76,17 @@ Windows系统安装时，建议安装 Git Bash 这个git 的命令行工具。
   - **本地仓库（local）** - 提交更新，找到暂存区域的文件，将快照永久性存储到 Git 本地仓库。
   - **远程仓库（remote）** - 以上几个工作区都是在本地。为了让别人可以看到你的修改，我们需要将我们的更新推送到远程仓库。同理，如果我们想同步别人的修改，我们就需要从远程仓库拉取更新。
 
-  ![](/Users/sunwj/Documents/GitHub/JavaGitBook/image/git的文件状态.png)
+  ![](../../image/git的文件状态.png)
 
 * ##### Git分支
 
   分支是为了将修改记录的整个流程分开存储，让分开的分支不受其它分支的影响，所以在同一个数据库里可以同时进行多个不同的修改。
 
-  ![](/Users/sunwj/Documents/GitHub/JavaGitBook/image/git分支.png)
+  ![](../../image/git分支.png)
 
   Git会为我们自动创建一个分支，这个分支叫主分支（master），其它分支开发完成之后都要合并到master分支上。
 
-  ![](/Users/sunwj/Documents/GitHub/JavaGitBook/image/git主分支.png)
+  ![](../../image/git主分支.png)
 
 * ##### HEAD
 
@@ -94,7 +94,7 @@ Windows系统安装时，建议安装 Git Bash 这个git 的命令行工具。
 
 ### Git命令使用
 
-![](/Users/sunwj/Documents/GitHub/JavaGitBook/image/git常用命令.png)
+![](../../image/git常用命令.png)
 
 * ##### 创建版本库
 
@@ -379,7 +379,7 @@ release 为预上线分支，发布提测阶段，会release分支代码为基�
   * 补丁分支
   * 修改分支
 
-![](/Users/sunwj/Documents/GitHub/JavaGitBook/image/git企业工作流程.png)
+![](../../image/git企业工作流程.png)
 
 * ##### Github Flow
 
@@ -390,7 +390,7 @@ release 为预上线分支，发布提测阶段，会release分支代码为基�
   * 部署检测
   * 合并代码
 
-![](/Users/sunwj/Documents/GitHub/JavaGitBook/image/github flow.png)
+![](../../image/github flow.png)
 
 * ##### 日常使用
 
@@ -413,7 +413,7 @@ release 为预上线分支，发布提测阶段，会release分支代码为基�
 
 ### 日常常用命令
 
-![](/Users/sunwj/Documents/GitHub/JavaGitBook/image/git提交.png)
+![](../../image/git提交.png)
 
 ```shell
 # 工作区 -> 暂存区

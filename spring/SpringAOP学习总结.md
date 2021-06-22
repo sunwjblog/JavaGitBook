@@ -14,7 +14,7 @@ AOP(Aspect-Oriented Programming:面向切面编程)能够将那些与业务无�
 
 动态代理模式实现原理，可以参考整理的动态代理知识点总结 >> [代理模式总结](javabase/proxy/代理模式总结.md)
 
-![](/Users/sunwj/Documents/GitHub/JavaGitBook/image/SpringAOP动态代理.jpeg)
+![](../image/SpringAOP动态代理.jpeg)
 
 ### AOP术语和流程
 
@@ -30,7 +30,7 @@ AOP(Aspect-Oriented Programming:面向切面编程)能够将那些与业务无�
 
 如图：
 
-![](/Users/sunwj/Documents/GitHub/JavaGitBook/image/SpringAOP示例.png)
+![](../image/SpringAOP示例.png)
 
 在上面的例子中，包租婆的核心业务就是签合同，收房租，那么这就够了，灰色框起来的部分都是重复且边缘的事，交给中介商就好了，这就是 **AOP 的一个思想：让关注点代码与业务代码分离！**
 

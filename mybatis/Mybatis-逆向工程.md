@@ -199,7 +199,7 @@ public void testMyBatis3() throws IOException{
 
 ##### 配置maven启动命令
 
-![](/Users/sunwj/Documents/GitHub/JavaGitBook/image/mybatis逆向工程.png)
+![](../image/mybatis逆向工程.png)
 
 * 点击+号选择maven
 * 自定义name
@@ -210,5 +210,5 @@ public void testMyBatis3() throws IOException{
 
 执行完之后
 
-![](/Users/sunwj/Documents/GitHub/JavaGitBook/image/mybatis逆向工程结构.png)
+![](../image/mybatis逆向工程结构.png)
 

@@ -2,7 +2,7 @@
 
 #### Mybatis架构设计图
 
-![](/Users/sunwj/Documents/GitHub/JavaGitBook/image/Mybatis架构图.webp)
+![](../image/Mybatis架构图.webp)
 
 * ##### 功能架构解释
 
@@ -16,7 +16,7 @@
 
 ##### 框架架构图
 
-![](/Users/sunwj/Documents/GitHub/JavaGitBook/image/Mybatis框架架构图.webp)
+![](../image/Mybatis框架架构图.webp)
 
 ###### 框架架构讲解：
 
@@ -77,7 +77,7 @@
 
 #### Mybatis成员层次与职责
 
-![](/Users/sunwj/Documents/GitHub/JavaGitBook/image/Mybatis成员层次与职责图.webp)
+![](../image/Mybatis成员层次与职责图.webp)
 
 1. SqlSession 作为MyBatis工作的主要顶层API，表示和数据库交互的会话，完成必要数据库增删改查功能
 2. Executor MyBatis执行器，是MyBatis 调度的核心，负责SQL语句的生成和查询缓存的维护

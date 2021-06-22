@@ -1,6 +1,6 @@
 # MySQL的三大日志-binlog、redo log和undo log
 
-![](/Users/sunwj/Documents/GitHub/JavaGitBook/image/mysql的逻辑架构图.png)
+![](../../image/mysql的逻辑架构图.png)
 
 ## binlog
 
@@ -37,7 +37,7 @@
 
 ##### `mysql `每执行一条 `DML `语句，先将记录写入 `redo log buffer `，后续某个时间点再一次性将多个操作记录写到 `redo log file `。这种 **先写日志，再写磁盘** 的技术就是 `MySQL`里经常说到的 `WAL(Write-Ahead Logging) `技术。
 
-![](/Users/sunwj/Documents/GitHub/JavaGitBook/image/redo log.png)
+![](../../image/redo log.png)
 
 如图所示，在计算机操作系统中，用户空间( `user space `)下的缓冲区数据一般情况下是无法直接写入磁盘的，中间必须经过操作系统内核空间( `
 kernel space `)缓冲区( `OS Buffer `)。因此， `redo log buffer `写入 `redo log
@@ -52,14 +52,14 @@ innodb_flush_log_at_trx_commit ` 参数配置，各参数值含义如下：
 | 1（实时写，实时刷） | 事务每次提交都会将 `redo log buffer `中的日志写入 `os buffer `并调用 `fsync() `刷到 `redo log file `中。这种方式即使系统崩溃也不会丢失任何数据，但是因为每次提交都写入磁盘，IO的性能较差。 |
 | 2（实时写，延迟刷） | 每次提交都仅写入到 `os buffer `，然后是每秒调用 `fsync() `将 `os buffer `中的日志写入到 `redo log file `。 |
 
-![](/Users/sunwj/Documents/GitHub/JavaGitBook/image/redo log2.png)
+![](../../image/redo log2.png)
 
 ### Redo log记录形式
 
 `redo log `实际上记录数据页的变更，而这种变更记录是没必要全部保存，因此 `redo log`
 实现上采用了大小固定，循环写入的方式，当写到结尾时，会回到开头循环写日志。如下图：
 
-![](/Users/sunwj/Documents/GitHub/JavaGitBook/image/redo log3.png)
+![](../../image/redo log3.png)
 
 在innodb中，既有` redo log `需要刷盘，还有 `数据页 `也需要刷盘， `redo log `存在的意义主要就是降低对 `数据页 `刷盘的要求 **。**
 
@@ -97,7 +97,7 @@ undo log `，这样在发生错误时，就能回滚到事务之前的数据状�
 
 如图所示是一条更新sql的执行流程 update T set c=c+1 where ID=2；
 
-![](/Users/sunwj/Documents/GitHub/JavaGitBook/image/update语句-二阶段提交.png)
+![](../../image/update语句-二阶段提交.png)
 
 注意：最后三步为什么将redo log的写拆成了两个步骤：prepare和commit，这就是mysql典型的“两阶段提交”流程。
 

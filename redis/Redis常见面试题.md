@@ -8,7 +8,7 @@
 
    强调的是缓存和数据库都不存在的数据。
 
-   ![](/Users/sunwj/Documents/GitHub/JavaGitBook/image/缓存穿透.png)
+   ![](../image/缓存穿透.png)
 
 2. #### 解决方案
 
@@ -34,7 +34,7 @@
 
    强调的是某个热点key，在redis过期瞬间，有大量请求到达，瞬间击穿缓存，落到后台DB上。
 
-   ![](/Users/sunwj/Documents/GitHub/JavaGitBook/image/缓存击穿.png)
+   ![](../image/缓存击穿.png)
 
 2. #### 解决方案
 
@@ -46,7 +46,7 @@
      * 当操作返回成功时，再进行load db的操作，并回设缓存,最后删除mutex key
      * 当操作返回失败，证明有线程在load db，当前线程睡眠一段时间再重试整个get缓存的方法
 
-   ![](/Users/sunwj/Documents/GitHub/JavaGitBook/image/缓存击穿解决方案使用锁流程图.png)
+   ![](../image/缓存击穿解决方案使用锁流程图.png)
 
 ### 3、缓存雪崩
 
@@ -56,9 +56,9 @@
 
    缓存雪崩与缓存击穿的区别在于雪崩针对很多key缓存，击穿则是某一个key
 
-   ![](/Users/sunwj/Documents/GitHub/JavaGitBook/image/缓存雪崩.png)
+   ![](../image/缓存雪崩.png)
 
-![](/Users/sunwj/Documents/GitHub/JavaGitBook/image/缓存雪崩2.png)
+![](../image/缓存雪崩2.png)
 
 2. #### 解决方案
 

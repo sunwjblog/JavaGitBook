@@ -20,7 +20,7 @@
 
 ### IO模型的基本概念
 
-![](/Users/sunwj/Documents/GitHub/JavaGitBook/image/IO模型.png)
+![](../image/IO模型.png)
 
 如图所示，以一个网络IO来举例，对于一个network IO (以read举例)，它会涉及到两个系统对象：一个是调用这个IO的进程，另一个就是系统内核(kernel)。当一个read操作发生时，它会经历两个阶段：
 
@@ -36,7 +36,7 @@
 
 ### 1、Blocking IO
 
-![](/Users/sunwj/Documents/GitHub/JavaGitBook/image/BlockingIO.png)
+![](../image/BlockingIO.png)
 
 过程解释：
 
@@ -48,7 +48,7 @@
 
 ### 2、非阻塞式I/O
 
-![](/Users/sunwj/Documents/GitHub/JavaGitBook/image/NIO.png)
+![](../image/NIO.png)
 
 过程解释：
 
@@ -59,9 +59,9 @@
 
 ### 3、I/O多路复用
 
-![](/Users/sunwj/Documents/GitHub/JavaGitBook/image/I:O多路复用.png)
+![](../image/I:O多路复用.png)
 
-![](/Users/sunwj/Documents/GitHub/JavaGitBook/image/I:O多路复用结构图.png)
+![](../image/I:O多路复用结构图.png)
 
 IO复用同非阻塞IO本质一样，不过利用了新的select系统调用，由内核来负责本来是请求进程该做的轮询操作。看似比非阻塞IO还多了一个系统调用开销，不过因为可以支持多路IO，才算提高了效率。
 
@@ -78,11 +78,11 @@ IO 多路复用模型中，线程首先发起 select 调用，询问内核数据
 
 ### 4、信号驱动式I/O
 
-![](/Users/sunwj/Documents/GitHub/JavaGitBook/image/信号驱动式I:O.png)
+![](../image/信号驱动式I:O.png)
 
 ### 5、异步I/O
 
-![](/Users/sunwj/Documents/GitHub/JavaGitBook/image/异步I:O.png)
+![](../image/异步I:O.png)
 
 这类函数的工作机制是告知内核启动某个操作，并让内核在整个操作（包括将数据从内核拷贝到用户空间）完成后通知我们。
 
@@ -92,7 +92,7 @@ IO 多路复用模型中，线程首先发起 select 调用，询问内核数据
 
 BIO、NIO、AIO
 
-![](/Users/sunwj/Documents/GitHub/JavaGitBook/image/BIO、NIO和AIO.png)
+![](../image/BIO、NIO和AIO.png)
 
 ### 参考
 

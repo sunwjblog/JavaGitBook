@@ -18,7 +18,7 @@ InnoDB 里面每个事务都有一个唯一的事务 ID，叫作**transaction id
 
 如下图所示，一行记录被多个事务更新之后，最新值为 k=22。假设事务A在 trx_id=15 这个事务**提交后启动**，事务A 要读取该行时，就通过 undo log，计算出该事务启动瞬间该行的值为 k=10。
 
-![](/Users/sunwj/Documents/GitHub/JavaGitBook/image/可重复读实现原理.png)
+![](../../image/可重复读实现原理.png)
 
 在可重复读隔离级别下，一个事务在启动时，InnoDB 会为事务构造一个数组，用来保存这个事务启动瞬间，当前正在”活跃“的所有事务ID。”活跃“指的是，启动了但还没提交。
 
@@ -28,7 +28,7 @@ InnoDB 里面每个事务都有一个唯一的事务 ID，叫作**transaction id
 
 这个视图数组把所有的 row trx_id 分成了几种不同的情况。
 
-![](/Users/sunwj/Documents/GitHub/JavaGitBook/image/可重复读原理2.png)
+![](../../image/可重复读原理2.png)
 
 如果 trx_id 小于低水位，表示这个版本在事务启动前已经提交，可见；
 
@@ -69,7 +69,7 @@ insert into t(id, k) values(1,1),(2,2);
 
 根据假设，我们得出事务启动瞬间的视图数组：事务A：[99, 100]，事务B：[99, 100, 101]，事务C：[99, 100, 101, 102]。
 
-![](/Users/sunwj/Documents/GitHub/JavaGitBook/image/可重复读的原理3.png)
+![](../../image/可重复读的原理3.png)
 
 事务C通过更新语句，把 k 更新为 2，此时trx_id=102；
 
@@ -122,7 +122,7 @@ insert into t(id, k) values(1,1),(2,2);
 
 InnoDB 肯定不允许这种情况的发生，事务B在执行更新语句时，会给该行加上行锁，直到事务B结束，才会释放这个锁。
 
-![](/Users/sunwj/Documents/GitHub/JavaGitBook/image/可重复读的实现原理4.png)
+![](../../image/可重复读的实现原理4.png)
 
 ## 快照读和当前读
 

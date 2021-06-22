@@ -16,11 +16,11 @@
 
 * 常用
 
-![](/Users/sunwj/Documents/GitHub/JavaGitBook/image/grep命令参数.png)
+![](../image/grep命令参数.png)
 
 * 不常用
 
-![](/Users/sunwj/Documents/GitHub/JavaGitBook/image/grep命令参数2.png)
+![](../image/grep命令参数2.png)
 
 ### Grep和EGrep
 
@@ -30,8 +30,8 @@
 
 ### Grep命令脑图
 
-![](/Users/sunwj/Documents/GitHub/JavaGitBook/image/grep命令脑图.png)
+![](../image/grep命令脑图.png)
 
 ### 举例
 
-![](/Users/sunwj/Documents/GitHub/JavaGitBook/image/grep示例.png)
+![](../image/grep示例.png)
