@@ -1,6 +1,6 @@
 # JVM垃圾回收
 
-![](/Users/sunwj/Documents/GitHub/JavaGitBook/image/JVM垃圾回收.png)
+![](../../image/JVM垃圾回收.png)
 
 当需要排查各种内存溢出问题、当垃圾收集成为系统达到更高并发的瓶颈时，我们就需要对这些“自动化”的技术实施必要的监控和调节。
 
@@ -10,7 +10,7 @@ Java 的自动内存管理主要是针对对象内存的回收和对象内存的
 
 Java 堆是垃圾收集器管理的主要区域，因此也被称作**GC 堆（Garbage Collected Heap）**.从垃圾回收的角度，由于现在收集器基本都采用分代垃圾收集算法，所以 Java 堆还可以细分为：新生代和老年代：再细致一点有：Eden 空间、From Survivor、To Survivor 空间等。**进一步划分的目的是更好地回收内存，或者更快地分配内存。**
 
-![](/Users/sunwj/Documents/GitHub/JavaGitBook/image/JVM内存划分图.png)
+![](../../image/JVM内存划分图.png)
 
 Java 堆是 JVM 所管理的内存中最大的一块，也是垃圾收集器的管理区域。大多数垃圾收集器都会将堆内存划分为上图所示的几个区域，整体分为新生代和老年代，比例为 1 : 2，新生代又进一步分为 Eden、From Survivor 和 To Survivor，默认比例为 8 : 1 : 1，请注意，可通过 SurvivorRatio 参数进行设置。
 
@@ -39,7 +39,7 @@ public class Student {
 
 上述代码创建了 a 和 b 两个 Student 实例，并把它们各自的 friend 字段赋值为对方，除此之外，这两个对象再无任何引用，然后将它们都赋值为 null，在这种情况下，这两个对象已经不可能再被访问，但是它们因为互相引用着对方，导致它们的引用计数都不为零，引用计数算法也就无法回收它们。如：
 
-![](/Users/sunwj/Documents/GitHub/JavaGitBook/image/循环引用.png)
+![](../../image/循环引用.png)
 
 但是在 Java 程序中，a 和 b 是可以被回收的，因为 JVM 并没有使用引用计数法判定对象是否可回收，而是采用了可达性分析法。
 
@@ -49,7 +49,7 @@ public class Student {
 
 如图：
 
-![](/Users/sunwj/Documents/GitHub/JavaGitBook/image/可达性分析法.png)
+![](../../image/可达性分析法.png)
 
 可作为GC Roots的对象包括下面几种：
 
@@ -63,7 +63,7 @@ public class Student {
 
 ### 标记-清除算法
 
-![](/Users/sunwj/Documents/GitHub/JavaGitBook/image/标记清除算法.png)
+![](../../image/标记清除算法.png)
 
 该算法的过程分为标记和清除两个阶段：首先标记出所有需要回收的对象，其中标记过程就是使用可达性分析法判断对象是否属于垃圾的过程。在标记完成后，统一回收掉所有被标记的对象，也可以反过来，标记存活的对象，统一回收所有未被标记的对象。
 
@@ -74,7 +74,7 @@ public class Student {
 
 ### 标记-复制算法
 
-![](/Users/sunwj/Documents/GitHub/JavaGitBook/image/复制算法.png)
+![](../../image/复制算法.png)
 
 标记-复制算法常简称复制算法，这一算法正好解决了标记-清除算法在面对大量可回收对象时执行效率低下的问题。其实现方法也很易懂：在可用内存中划分出两块大小相同的区域，每次只使用其中一块，另一块保持空闲状态，第一块用完的时候，就把存活的对象全部复制到第二块区域，然后把第一块全部清空。
 
@@ -82,7 +82,7 @@ public class Student {
 
 ### 标记-整理算法
 
-![](/Users/sunwj/Documents/GitHub/JavaGitBook/image/标记整理算法.png)
+![](../../image/标记整理算法.png)
 
 这个算法完美解决了标记-清除算法的空间碎片化问题，其标记过程与“标记-清除”算法一样，但后续步骤不是直接对可回收对象进行清理，而是让所有存活的对象都向内存空间一端移动，然后直接清理掉边界以外的内存。
 
@@ -92,7 +92,7 @@ public class Student {
 
 JVM 中存活对象数量与年龄之间的关系，如图：
 
-![](/Users/sunwj/Documents/GitHub/JavaGitBook/image/分代收集算法.png)
+![](../../image/分代收集算法.png)
 
 在此基础上，人们提出了以下假说：
 
@@ -124,11 +124,11 @@ JVM 中存活对象数量与年龄之间的关系，如图：
 
 第一次Minor GC 如图：
 
-![](/Users/sunwj/Documents/GitHub/JavaGitBook/image/MinorGC动图.gif)
+![](../../image/MinorGC动图.gif)
 
 在后续的 Minor GC 中，S0 和 S1会交替转化为 From Survivor 和 To Survivor，Eden 和 From Survivor 中的存活对象会复制到 To Survivor 中，并将年龄加 1。
 
-![](/Users/sunwj/Documents/GitHub/JavaGitBook/image/后续Minor GC.gif)
+![](../../image/后续Minor GC.gif)
 
 #### 对象晋升老年代
 
@@ -136,7 +136,7 @@ JVM 中存活对象数量与年龄之间的关系，如图：
 
    对象在 Survivor 区中每熬过一次Minor GC，年龄就增加1岁，当它的年龄增加到一定程度 (默认为15)，就会被晋升到老年代中。对象晋升老年代的年龄阈值，可以通过参数 -XX:MaxTenuringThreshold 设置，这个参数的最大值是15，因为对象年龄信息储存在对象头中，占4个比特 (bit)的内存，所能表示最大数字就是15。
 
-   ![](/Users/sunwj/Documents/GitHub/JavaGitBook/image/MinorGC晋升老年代.gif)
+   ![](../../image/MinorGC晋升老年代.gif)
 
 #### 大对象直接进入老年到
 
@@ -156,7 +156,7 @@ Serial（串行）收集器是最基本、历史最悠久的垃圾收集器了�
 
 **新生代采用标记-复制算法，老年代采用标记-整理算法。**
 
-![](/Users/sunwj/Documents/GitHub/JavaGitBook/image/Serial收集器.png)
+![](../../image/Serial收集器.png)
 
 虚拟机的设计者们当然知道 Stop The World 带来的不良用户体验，所以在后续的垃圾收集器设计中停顿时间在不断缩短（仍然还有停顿，寻找最优秀的垃圾收集器的过程仍然在继续）。
 
@@ -168,7 +168,7 @@ Serial（串行）收集器是最基本、历史最悠久的垃圾收集器了�
 
 **新生代采用标记-复制算法，老年代采用标记-整理算法。**
 
-![](/Users/sunwj/Documents/GitHub/JavaGitBook/image/ParNew收集器.png)
+![](../../image/ParNew收集器.png)
 
 它是许多运行在 Server 模式下的虚拟机的首要选择，除了 Serial 收集器外，只有它能与 CMS 收集器（真正意义上的并发收集器，后面会介绍到）配合工作。
 
@@ -195,7 +195,7 @@ Parallel Scavenge 收集器也是使用标记-复制算法的多线程收集器�
 
 **新生代采用标记-复制算法，老年代采用标记-整理算法。**
 
-![](/Users/sunwj/Documents/GitHub/JavaGitBook/image/parllel-scavenge收集器.png)
+![](../../image/parllel-scavenge收集器.png)
 
 **这是 JDK1.8 默认收集器**
 
@@ -231,7 +231,7 @@ JDK1.8 默认使用的是 Parallel Scavenge + Parallel Old，如果指定了-XX:
 - **重新标记：** 重新标记阶段就是为了修正并发标记期间因为用户程序继续运行而导致标记产生变动的那一部分对象的标记记录，这个阶段的停顿时间一般会比初始标记阶段的时间稍长，远远比并发标记阶段时间短
 - **并发清除：** 开启用户线程，同时 GC 线程开始对未标记的区域做清扫。
 
-![](/Users/sunwj/Documents/GitHub/JavaGitBook/image/CMS收集器.png)
+![](../../image/CMS收集器.png)
 
 从它的名字就可以看出它是一款优秀的垃圾收集器，主要优点：**并发收集、低停顿**。但是它有下面三个明显的缺点：
 

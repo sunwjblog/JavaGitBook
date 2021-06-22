@@ -8,11 +8,11 @@
 
 ##### jdk1.8之前：
 
-![](/Users/sunwj/Documents/GitHub/JavaGitBook/image/运行时的数据区域.png)
+![](../../image/运行时的数据区域.png)
 
 ##### jdk1.8:
 
-![](/Users/sunwj/Documents/GitHub/JavaGitBook/image/java运行时区域jdk1.8.png)
+![](../../image/java运行时区域jdk1.8.png)
 
 区别：jdk1.8版本的运行时区域，是把原来的**方法区换成了元空间**
 
@@ -53,7 +53,7 @@
 
 如图：
 
-![](/Users/sunwj/Documents/GitHub/JavaGitBook/image/Java虚拟机栈.png)
+![](../../image/Java虚拟机栈.png)
 
 **虚拟机栈会出现两种错误：`StackOverFlowError` 和 `OutOfMemoryError`。**
 
@@ -66,7 +66,7 @@
 
 如图：
 
-![](/Users/sunwj/Documents/GitHub/JavaGitBook/image/Java本地方法栈.png)
+![](../../image/Java本地方法栈.png)
 
 本地方法栈也会抛出 **StackOverflowError** 和 **OutOfMemoryError** 异常
 
@@ -84,7 +84,7 @@ Java 堆是垃圾收集器管理的主要区域，因此也被称作**GC 堆（G
 
 如图：
 
-![](/Users/sunwj/Documents/GitHub/JavaGitBook/image/Java堆.png)
+![](../../image/Java堆.png)
 
 大部分情况，对象都会首先在 Eden 区域分配，在一次新生代垃圾回收后，如果对象还存活，则会进入 s0 或者 s1，并且对象的年龄还会加 1(Eden 区->Survivor 区后对象的初始年龄变为 1)，当它的年龄增加到一定程度（Hotspot 遍历所有对象时，按照年龄从小到大对其所占用的大小进行累积，当累积的某个年龄大小超过了 survivor 区的一半时，取这个年龄和 MaxTenuringThreshold 中更小的一个值，作为新的晋升年龄阈值），就会被晋升到老年代中。可以通过参数 `-XX:MaxTenuringThreshold` 来设置。
 

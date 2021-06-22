@@ -2,7 +2,7 @@
 
 ## 示例
 
-![](/Users/sunwj/Documents/GitHub/JavaGitBook/image/uml_class_struct.jpeg)
+![](../../image/uml_class_struct.jpeg)
 
 * 车的类图结构为<\<abstract\>>，表示车是一个抽象类
 * 它有两个继承类：小汽车和自行车；他们之间的关系为**实现关系**，使用**带空心箭头的虚线**表示；
@@ -22,7 +22,7 @@
 
 如：
 
-![](/Users/sunwj/Documents/GitHub/JavaGitBook/image/依赖关系UML.png)
+![](../../image/依赖关系UML.png)
 
 ### 关联关系
 
@@ -32,7 +32,7 @@
 
 如：
 
-![](/Users/sunwj/Documents/GitHub/JavaGitBook/image/关联关系UML.png)
+![](../../image/关联关系UML.png)
 
 ### 聚合关系
 
@@ -46,7 +46,7 @@
 
 如：
 
-![](/Users/sunwj/Documents/GitHub/JavaGitBook/image/聚合关系UML.png)
+![](../../image/聚合关系UML.png)
 
 ### 组合关系
 
@@ -58,7 +58,7 @@
 
 如：
 
-![](/Users/sunwj/Documents/GitHub/JavaGitBook/image/组合关系UML.png)
+![](../../image/组合关系UML.png)
 
 ### 实现关系
 
@@ -68,7 +68,7 @@
 
 如：
 
-![](/Users/sunwj/Documents/GitHub/JavaGitBook/image/实现关系UML.png)
+![](../../image/实现关系UML.png)
 
 ### 泛化关系
 
@@ -78,7 +78,7 @@
 
 如：
 
-![](/Users/sunwj/Documents/GitHub/JavaGitBook/image/泛化关系UML.png)
+![](../../image/泛化关系UML.png)
 
 六种关系中，从弱到强依次是：
 依赖关系 < 关联关系 < 聚合关系 < 组合关系 < 实现关系 = 泛化关系
@@ -87,7 +87,7 @@
 
 如：
 
-![](/Users/sunwj/Documents/GitHub/JavaGitBook/image/UML关系图.png)
+![](../../image/UML关系图.png)
 
 ## 参考
 
