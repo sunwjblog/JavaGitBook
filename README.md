@@ -41,6 +41,11 @@
 
 * [常用开发工具笔记](devtools/DevtoolsSummary.md)
 
+### 刻意练习
+
+* [刻意练习目录](exercise/ExerciseSummary.md)
+
 ### 阅读
 
 * [阅读图书笔记](readbook/ReadBookListSummary.md)
+

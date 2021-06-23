@@ -22,7 +22,7 @@
 
 这6个状态的状态流转图如下：
 
-![img](/Users/sunwj/Documents/GitHub/JavaGitBook/image/线程生命周期图.png)
+![img](../image/线程生命周期图.png)
 
 
 
@@ -36,7 +36,7 @@
 
 ​		在阿里巴巴开发手册上，也是建议大家使用线程池的方式创建多线程，如：
 
-![线程池约束](/Users/sunwj/Documents/GitHub/JavaGitBook/image/线程池约束.png)
+![线程池约束](../image/线程池约束.png)
 
 ##### 1.2.2启动线程
 
