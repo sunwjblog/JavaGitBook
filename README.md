@@ -30,7 +30,7 @@
 ### 算法
 
 * [常用算法](javaalgorithm/AlgorithmSummary.md)
-* [leetcode刷题笔记]()
+* [leetcode刷题笔记](https://github.com/sunwjblog/gitbook_leetcode/tree/main/gitbook_leetcode)
 
 ### 框架
 
