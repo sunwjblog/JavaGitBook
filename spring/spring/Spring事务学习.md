@@ -1,6 +1,6 @@
 # Spring事务
 
-![](../image/Spring-tx.png)
+![](../../image/Spring-tx.png)
 
 # Spring事务的分类
 
