@@ -25,3 +25,4 @@
   * [UML类图学习](uml/UML类学习总结.md)
 
 * ### Java新特性 JDK1.8
+  * [Lambda表达式](jdk1.8/Lambda表达式.md)
