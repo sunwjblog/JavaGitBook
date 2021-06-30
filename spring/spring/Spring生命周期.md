@@ -17,7 +17,7 @@
 
 流程图：
 
-![](../image/Spring生命周期.png)
+![](../../image/Spring生命周期.png)
 
 ### 示例代码
 

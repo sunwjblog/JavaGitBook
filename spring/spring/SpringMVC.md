@@ -2,7 +2,7 @@
 
 ### SpringMVC执行原理
 
-![](../image/SpringMVC原理.png)
+![](../../image/SpringMVC原理.png)
 
 ##### 流程解释
 

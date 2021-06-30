@@ -120,7 +120,7 @@ JVM 中存活对象数量与年龄之间的关系，如图：
 1. 对象优先在新生代 Eden 区中分配，当 Eden 区没有足够空间进行分配时，虚拟机将发起一次 Minor GC。
 2. Eden、From Survivor 和 To Survivor 的比例为 8 : 1 : 1，之所以按这个比例是因为绝大多数对象都是朝生夕灭的，垃圾收集时 Eden 存活的对象数量不会太多，Survivor 空间小一点也足以容纳。
 3. 每次新生代中可用内存空间为整个新生代容量的90% (Eden 的 80% 加上 To Survivor 的 10%)，只有From Survivor 空间，即 10% 的新生代是会被“浪费”的。不会像原始的标记-复制算法那样浪费一半的内存空间。
-4. From Survivor 和 To Survivor 的空间并不是固定的，而是在 S0 和 S1 之间动态转换的，第一次 Minor GC 时会选择 S1 作为 To Survivor，并将 Eden 中存活的对象复制到其中，并将对象的年龄加1。
+4. From Survivor 和 To Survivor 的空间并不是固定的，而是在 S0 和 S1 之间动态转换的，第一次 Minor GC 时会选择 S0 作为 To Survivor，并将 Eden 中存活的对象复制到其中，并将对象的年龄加1。
 
 第一次Minor GC 如图：
 
