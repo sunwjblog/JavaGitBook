@@ -6,6 +6,7 @@
 
 - [Lambda表达式](#Lambda表达式)
   - [1.1Lambda管中窥豹](#1.1Lambda管中窥豹)
+  - [1.2在哪里以及如何使用Lambda](#1.2在哪里以及如何使用Lambda)
 
 <!-- /MarkdownTOC -->
 
@@ -101,7 +102,7 @@ Comparator<Apple> byWeight = (Apple a1, Apple a2) -> a1.getWeight().compareTo(a2
 | 组合两个值            | (int a, int b) -> a * b                                      |
 | 比较两个对象          | (Apple a1, Apple a2) -> a.getWeight().compareTo(a2.getWeight()) |
 
-## 1.2 在哪里以及如何使用Lambda
+## 1.2在哪里以及如何使用Lambda
 
 只有函数式接口，才能使用Lambda表达式。
 
