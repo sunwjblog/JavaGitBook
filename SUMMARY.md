@@ -11,5 +11,5 @@
 * [Redis有序集合之跳表](redis/Redis有序集合跳表.md)
 * [红黑树](javaalgorithm/structure/红黑树.md)
 * [redis集群的高可用](redis/redis集群的高可用.md)
-* [Redis有序集合之散列表](redis/Redis有序集合散列表.md)
+* [Stream流](javabase/jdk1.8/Stream.md)
 

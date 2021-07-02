@@ -2,6 +2,13 @@
 
 [toc]
 
+<!-- MarkdownTOC -->
+
+- [Lambda表达式](#Lambda表达式)
+  - [1.1 Lambda管中窥豹](#1.1 Lambda管中窥豹)
+
+<!-- /MarkdownTOC -->
+
 ## 1.1 Lambda管中窥豹
 
 ### Lambda表达式
@@ -247,7 +254,7 @@ public static String processFile(BufferedReaderProcessor p) throws IOException {
 
 Lambda表达式允许你直接内联，为函数式接口的抽象方法提供实现，并且将整个表达式作为函数式接口的一个实例。
 
-```
+```java
 public static String processFile(BufferedReaderProcessor p) throws IOException {
 	
 	try(BufferedReader br = new BufferedReader(new FIleReader("data.txt"))){
@@ -264,19 +271,19 @@ public static String processFile(BufferedReaderProcessor p) throws IOException {
 
 处理一行：
 
-```
+```java
 String oneLine = processFile((BuferedReader br) -> br.readLine());
 ```
 
 处理两行：
 
-```
+```java
 String twoLine = processFile((BuferedReader br) -> br.readLine() + br.readLine());
 ```
 
 
 
-## 函数式接口（了解）
+## 函数式接口
 
 JDK提供了大量常用的函数式接口以丰富Lambda的典型使用场景，它们主要在java.util.function包中提供。
 
@@ -375,9 +382,39 @@ Lambda的类型是从使用Lambda的上下文推断出来的。上下文（比�
 
 ### 类型推断
 
+Java编译器会从上下文（目标类型）推断出用什么函数式接口来配合Lambda表达式，这意味着它也可以推断出适合Lambda的签名，因为函数描述符可以通过目标类型来得到。
 
+如：
 
-## 方法引用
+```
+List<Apple> greenApples = filter(inventory, a -> "green".equals(a.getColor()));
+```
+
+编译器可以了解Lambda表达式的参数类型，这样就可以在Lambda语法中省去标注参数类型。Java编译器会像上面这样推断Lambda的参数类型。
+
+### 使用局部变量
+
+Lambda可以没有限制地捕获（也就是在其主体中引用）实例变量和静态变量。但局部变量必须显式声明为final，或事实上式final。所以Lambda表达式只能捕获指派给他们的局部变量一次。（tips：捕获实例变量可以被看作捕获最终局部变量this。）
+
+举例：
+
+```
+int portNumber = 1337;
+Runnable r = () -> sout(portNumber);
+portNumber = 31337; // 这样是错误的，因为Lambda表达式引用的局部变量必须是最终的final或事实上最终的。
+```
+
+**思考：为什么对局部变量有这些限制？**
+
+1. 应为实例变量和局部变量本质的实现方式不同，实例变量都存储在堆中，而局部变量则保存在栈上。如果Lambda可以直接访问局部变量，而且Lambda是在一个线程中使用的，则使用Lambda的线程，可能会在分配该变量的线程将这个变量收回之后，去访问该变量。因此，Java在访问自由局部变量时，实际上是在访问它的副本，而不是访问原始变量。
+
+**什么是闭包？**
+
+**闭包就是一个函数的实例，且它可以无限制地访问那个函数的非本地变量。**例如，闭包可以作为参数传递给另一个函数。它也可以访问和修改其作用域之外的变量。
+
+Java 8的Lambda和匿名类可以做类似于闭包的事情：**它们可以作为参数传递给方法，并且可以访问其作用域之外的变量。但有一个限制：它们不能修改定义Lambda的方法的局部变量的内容。这些变量必须是隐式最终的。可以认为Lambda是对值封闭，而不是对变量封闭。**
+
+## 1.6 方法引用
 
 ### 管中窥豹
 
@@ -394,6 +431,178 @@ Apple::getWeight  <==> (Apple a) -> a.getWeight()
 | (Str, i) -> str.substring(i)             | String::substring                 |
 | (String s) -> System.out.println(s)      | System.out::println               |
 
+方法引用看作针对仅仅涉及单一方法的Lambda的语法糖。
+
+#### 如何构建方法引用
+
+方法引用主要由三类：
+
+1. 指向**静态方法**的方法引用（例如Integer的parseInt方法，写作Integer::parseInt）。
+2. 指向**任意类型实例方法**的方法引用（例如String的length方法，写作String::length）。
+3. 指向**现有对象的实例方法的方法引用**（假设你有一个局部变量expensiveTransaction用于存放Transaction类型的对象，它支持实例方法getValue，那么你就可以写expensive-Transaction::getValue）。
+
+### 构造函数引用
+
+对于一个现有构造函数，你可以利用它的名称和关键字new来创建它的一个引用：**ClassName::new**。它的功能与指向静态方法的引用类似。
+
+如：
+
+```java
+// 无参的构造函数
+Supplier<Apple> a = Apple::new;
+        Apple apple = a.get();
+        
+========等价
+Supplier<Apple> a = () -> new Apple();
+        Apple apple = a.get();
+
+// 带有一个参数的构造函数
+Function<Integer, Apple> a = Apple::new;
+Apple apple = a.apply(100);
+
+========等价
+Function<Integer, Apple> a = (weight) -> new Apple(weight);
+Apple apple = a.apply(100);
+
+// 一个由Integer构成的List中的每个元素都通过我们前面定义的类似的map方法传递给了// Apple的构造函数，得到了一个具有不同重量苹果的List
+
+public static List<Apple> map(List<Apple> list, Function<Integer, Apple> f){
+
+	List<Apple> result = new ArrayList<>();
+	for(Integer e : list) {
+	
+		result.add(f.apply(e));
+	
+	}
+	return result;
+
+}
+
+List<Integer> weights = Arrays.asList(7, 3, 4, 10);
+List<Apple> apples = map(weights, Apple::new);
+
+// 有两个参数的构造函数
+BiFunction<String, Integer, Apple> c3 = Apple::new;
+Apple a3 = c3.apply("green", 10);
+=========等价
+BiFunction<String, Integer, Apple> c3 = (color, weight) -> new Apple(color, weight);
+Apple a3 = c3.apply("green", 10);
+```
 
 
-## Lambda复合
+
+## Lambda和方法引用实战
+
+用不同的排序策略给一个Apple列表排序，并需要展示如何把一个原始粗暴的解决方案转变得更为简明。
+
+代码如下：
+
+```java
+public class Sorting {
+
+    public static void main(String[] args) {
+
+        // 常规用法
+        List<Apple> inventory = new ArrayList<>();
+        inventory.addAll(Arrays.asList(new Apple(80,"green"), new Apple(155, "green"), new Apple(120, "red")));
+
+        inventory.sort(new AppleComparator());
+        System.out.println(inventory);
+
+        inventory.set(1, new Apple(30, "green"));
+
+        // 匿名内部类
+        inventory.sort(new Comparator<Apple>() {
+            @Override
+            public int compare(Apple o1, Apple o2) {
+                return o1.getWeight().compareTo(o2.getWeight());
+            }
+        });
+        System.out.println(inventory);
+
+        inventory.set(1,new Apple(20, "red"));
+
+        // Lambda表达式
+        inventory.sort((a1, a2) -> a1.getWeight().compareTo(a2.getWeight()));
+        System.out.println(inventory);
+
+        inventory.set(1, new Apple(10, "red"));
+
+        // 方法引用
+        inventory.sort(Comparator.comparing(Apple::getWeight));
+        System.out.println(inventory);
+    }
+
+    public static class Apple {
+        private int weight = 0;
+        private String color = "";
+
+        public Apple(int weight, String color){
+            this.weight = weight;
+            this.color = color;
+        }
+
+        public Integer getWeight() {
+            return weight;
+        }
+
+        public void setWeight(Integer weight) {
+            this.weight = weight;
+        }
+
+        public String getColor() {
+            return color;
+        }
+
+        public void setColor(String color) {
+            this.color = color;
+        }
+
+        public String toString() {
+            return "Apple{" +
+                    "color='" + color + '\'' +
+                    ", weight=" + weight +
+                    '}';
+        }
+    }
+
+    static class AppleComparator implements Comparator<Apple> {
+
+        @Override
+        public int compare(Apple o1, Apple o2) {
+            return o1.getWeight().compareTo(o2.getWeight());
+        }
+    }
+}
+```
+
+## 1.8复合Lambda表达式的有用方法
+
+### 比较器复合
+
+```
+// 使用静态方法Comparator.comparing，根据提取用于比较的键值的Function来返回一个Comparator
+
+Comparator<Apple> c = Comparator.comparing(Apple::getWeight);
+
+// 求逆序 按重量递减排序
+inventory.sort(comparing(Apple::getWeight).reversed());
+
+// 比较器链 两个苹果一样重时，进一步按国家排序
+inventory.sort(comparing(Apple::getWeight).reversed().thenComparing(Apple::getCountry));
+
+```
+
+## 小结
+
+1.  Lambda表达式可以理解为一种匿名函数：它没有名称，但有参数列表、函数主体、返回类型，可能还有一个可以抛出的异常的列表。
+2. Lambda表达式让你可以简洁地传递代码。
+3. 函数式接口就是仅仅声明了一个抽象方法的接口。
+4. 只有在接受函数式接口的地方才可以使用Lambda表达式。
+5. Lambda表达式允许你直接内联，为函数式接口的抽象方法提供实现，并且将整个表达式作为函数式接口的一个实例。
+6. Java 8自带一些常用的函数式接口，放在java.util.function包里，包括Predicate<T>、Function<T, R>、Supplier<T>、Consumer<T>和BinaryOperator<T>
+7. 为了避免装箱操作，对Predicate<T>和Function<T, R>等通用函数式接口的原始类型特化：IntPredicate、IntToLongFunction等。
+8. 环绕执行模式（即在方法所必需的代码中间，你需要执行点儿什么操作，比如资源分配和清理）可以配合Lambda提高灵活性和可重用性。
+9. Lambda表达式所需要代表的类型称为目标类型。
+10. 方法引用让你重复使用现有的方法实现并直接传递它们。
+11. Comparator、Predicate和Function等函数式接口都有几个可以用来结合Lambda表达式的默认方法。

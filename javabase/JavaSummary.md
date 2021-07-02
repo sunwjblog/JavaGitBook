@@ -26,3 +26,4 @@
 
 * ### Java新特性 JDK1.8
   * [Lambda表达式](jdk1.8/Lambda表达式.md)
+  * [Stream流](jdk1.8/Stream.md)
