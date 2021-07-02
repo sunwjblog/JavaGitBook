@@ -5,11 +5,11 @@
 <!-- MarkdownTOC -->
 
 - [Lambda表达式](#Lambda表达式)
-  - [1.1 Lambda管中窥豹](##1.1 Lambda管中窥豹)
+  - [1.1Lambda管中窥豹](#1.1Lambda管中窥豹)
 
 <!-- /MarkdownTOC -->
 
-## 1.1 Lambda管中窥豹
+## 1.1Lambda管中窥豹
 
 ### Lambda表达式
 
