@@ -2,14 +2,6 @@
 
 [toc]
 
-<!-- MarkdownTOC -->
-
-- [Lambda表达式](#Lambda表达式)
-  - [1.1Lambda管中窥豹](#1.1Lambda管中窥豹)
-  - [1.2在哪里以及如何使用Lambda](#1.2在哪里以及如何使用Lambda)
-
-<!-- /MarkdownTOC -->
-
 ## 1.1Lambda管中窥豹
 
 ### Lambda表达式
@@ -211,7 +203,7 @@ Tips：**@FunctionalInterface不是一定必需的**，但是对于为此设计�
 ```java
 public static String processFile() throws IOException {
 	
-	try(BufferedReader br = new BufferedReader(new FIleReader("data.txt"))){
+	try(BufferedReader br = new BufferedReader(new FileReader("data.txt"))){
 	
 		return br.readLine();
 	}
@@ -395,7 +387,7 @@ List<Apple> greenApples = filter(inventory, a -> "green".equals(a.getColor()));
 
 ### 使用局部变量
 
-Lambda可以没有限制地捕获（也就是在其主体中引用）实例变量和静态变量。但局部变量必须显式声明为final，或事实上式final。所以Lambda表达式只能捕获指派给他们的局部变量一次。（tips：捕获实例变量可以被看作捕获最终局部变量this。）
+Lambda可以没有限制地捕获（也就是在其主体中引用）实例变量和静态变量。但局部变量必须显式声明为final，或事实上是final。所以Lambda表达式只能捕获指派给他们的局部变量一次。（tips：捕获实例变量可以被看作捕获最终局部变量this。）
 
 举例：
 

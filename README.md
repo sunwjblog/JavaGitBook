@@ -31,6 +31,7 @@
 
 * [常用算法](javaalgorithm/AlgorithmSummary.md)
 * [leetcode刷题笔记](https://github.com/sunwjblog/gitbook_leetcode/tree/main/gitbook_leetcode)
+* [必知必会的数据结构](javaalgorithm/StructureSummary.md)
 
 ### 框架
 
