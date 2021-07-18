@@ -96,7 +96,7 @@ Comparator<Apple> byWeight = (Apple a1, Apple a2) -> a1.getWeight().compareTo(a2
 
 ## 1.2在哪里以及如何使用Lambda
 
-只有函数式接口，才能使用Lambda表达式。
+**只有函数式接口，才能使用Lambda表达式。**
 
 举例：
 
@@ -349,6 +349,40 @@ public class TestConsumer {
         });
     }
 }
+```
+
+### Predicate<T>接口
+
+java.util.function.Predicate<T>接口定义了一个名叫test的抽象方法，它接受泛型T对象，并返回一个boolean。
+
+如：
+
+```
+// 根据给定的规则，过滤集合中的字段串，此规则由Predicate的方法决定
+public List<String> filterString(List<String> list, Predicate<String> pre){
+	
+	List<String> filterList = new ArrayList<String>();
+	
+	for(String s:list){
+			if(pre.test(s)) {
+				filterString.add(s);
+			}
+	}
+	return filterList;
+}
+
+List<String> testStr = Arrays.asList("北京","南京","天津");
+
+// 老的方式
+List<String> filterStrs = this.filterString(testStr,new Predicate<String>(){
+	
+		@Override
+		public boolean test(String s){
+			retuen s.contains("京");
+		}
+});
+// Lambda表达式
+List<String> filterStrs = this.filterString(testStr, s -> s.contains("京"));
 ```
 
 
