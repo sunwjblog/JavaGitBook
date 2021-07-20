@@ -385,7 +385,130 @@ List<String> filterStrs = this.filterString(testStr,new Predicate<String>(){
 List<String> filterStrs = this.filterString(testStr, s -> s.contains("京"));
 ```
 
+### Function<T, R>接口
 
+Function 接口接受一个参数并生成结果。默认方法可用于将多个函数链接在一起（compose, andThen）
+
+```java
+@FunctionalInterface
+public interface Function<T, R> {
+    
+    //将Function对象应用到输入的参数上，然后返回计算结果。
+    R apply(T t);
+    //将两个Function整合，并返回一个能够执行两个Function对象功能的Function对象。
+    default <V> Function<V, R> compose(Function<? super V, ? extends T> before) {
+        Objects.requireNonNull(before);
+        return (V v) -> apply(before.apply(v));
+    }
+    // 
+    default <V> Function<T, V> andThen(Function<? super R, ? extends V> after) {
+        Objects.requireNonNull(after);
+        return (T t) -> after.apply(apply(t));
+    }
+ 
+    static <T> Function<T, T> identity() {
+        return t -> t;
+    }
+}
+```
+
+**示例：**
+
+```java
+Function<String, Integer> toInteger = Integer::valueOf;
+Function<String, String> backToString = toInteger.andThen(String::valueOf);
+backToString.apply("123");     // "123"
+```
+
+### Optional
+
+Optional不是函数式接口，而是用于防止 NullPointerException 的漂亮工具。
+
+Java 8中引入了一个新的类java.util.Optional<T>。这是一个封装Optional值的类。
+
+#### 应用Optional的几种模式
+
+##### 声明一个空的Optional
+
+可以通过静态工厂方法Optional.empty，创建一个空的Optional对象
+
+```java
+Optional<Car> optCar = Optional.empty();
+```
+
+##### 依据一个非空值创建Optional
+
+可以使用静态工厂方法Optional.of，依据一个非空值创建一个Optional对象
+
+```java
+Optional<Car> optCar = Optional.of(car);
+```
+
+如果car是一个null，这段代码会立即抛出一个NullPointerException，而不是等到你试图访问car的属性值时才返回一个错误。
+
+##### 可接受null的Optional
+
+使用静态工厂方法Optional.ofNullable，你可以创建一个允许null值的Optional对象
+
+```
+Optional<Car> optCar = Optional.ofNullable(car);
+```
+
+如果car是null，那么得到的Optional对象就是个空对象。
+
+##### 使用map从Optional对象中提取和转换值
+
+想要从insurance公司对象中提取公司的名称。提取名称之前，你需要检查insurance对象是否为null。
+
+```
+String name = null;
+if(insurance != null) {
+	name = isurance.getName();
+}
+
+---------------
+// 为了支持这种模式，Optional提供了一个map方法
+Optional<Insurance> optInsurance = Optional.ofNullable(insurance);
+Optional<String> name = optInsurace.map(Insurance::getName);
+
+// tips: 以上map的使用和流的map方法相差无几。map操作会将提供的函数应用于流的每个元素。你可以把Optional对象看成一种特殊的集合数据，它至多包含一个元素。如果Optional包含一个值，那函数就将该值作为参数传递给map，对该值进行转换。如果Optional为空，就什么也不做。
+```
+
+##### 使用flatMap链接Optional对象
+
+**反例：**
+
+```java
+Optional<Person> optPerson = Optional.of(person);
+Optional<String> name = optPerson.map(Person::getCar).map(Car::getInsurance).map(Insurance::getName);
+```
+
+这段代码无法通过编译。为什么呢？optPerson是Optional<Person>类型的变量，调用map方法应该没有问题。但getCar返回的是一个Optional<Car>类型的对象（如代码清单10-4所示），这意味着map操作的结果是一个Optional<Optional<Car>>类型的对象。
+
+如图：
+
+![](../../image/lambda_optional.png)
+
+**如何优化呢？**
+
+使用**flatMap方法**。
+
+![](../../image/lambda_optional_flatMap.png)
+
+##### 简单示例
+
+```java
+//of（）：为非null的值创建一个Optional
+Optional<String> optional = Optional.of("bam");
+// isPresent（）： 如果值存在返回true，否则返回false
+optional.isPresent();           // true
+//get()：如果Optional有值则将其返回，否则抛出NoSuchElementException
+optional.get();                 // "bam"
+//orElse（）：如果有值则将其返回，否则返回指定的其它值
+optional.orElse("fallback");    // "bam"
+//ifPresent（）：如果Optional实例有值则为其调用consumer，否则不做处理
+optional.ifPresent((s) -> System.out.println(s.charAt(0)));     // "b"
+```
 
 
 

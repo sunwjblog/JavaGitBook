@@ -585,3 +585,123 @@ Optional<Integer> highesValue =
   								.reduce((t1, t2) -> t1.getValue() < t2.getValue() ? t1 : t2);
 ```
 
+### Reduce(规约)
+
+这是一个 **最终操作** ，允许通过指定的函数来将stream中的多个元素规约为一个元素，规约后的结果是通过Optional 接口表示的：
+
+```java
+        //测试 Reduce (规约)操作
+        Optional<String> reduced =
+                stringList
+                        .stream()
+                        .sorted()
+                        .reduce((s1, s2) -> s1 + "#" + s2);
+        reduced.ifPresent(System.out::println);//aaa1#aaa2#bbb1#bbb2#bbb3#ccc#ddd1#ddd2
+```
+
+这个方法的主要作用是把 Stream 元素组合起来。它提供一个起始值（种子），然后依照运算规则（BinaryOperator），和前面 Stream 的第一个、第二个、第 n 个元素组合。从这个意义上说，字符串拼接、数值的 sum、min、max、average 都是特殊的 reduce。例如 Stream 的 sum 就相当于`Integer sum = integers.reduce(0, (a, b) -> a+b);`也有没有起始值的情况，这时会把 Stream 的前面两个元素组合起来，返回的是 Optional。
+
+```java
+// 字符串连接，concat = "ABCD"
+String concat = Stream.of("A", "B", "C", "D").reduce("", String::concat); 
+// 求最小值，minValue = -3.0
+double minValue = Stream.of(-1.5, 1.0, -3.0, -2.0).reduce(Double.MAX_VALUE, Double::min); 
+// 求和，sumValue = 10, 有起始值
+int sumValue = Stream.of(1, 2, 3, 4).reduce(0, Integer::sum);
+// 求和，sumValue = 10, 无起始值
+sumValue = Stream.of(1, 2, 3, 4).reduce(Integer::sum).get();
+// 过滤，字符串连接，concat = "ace"
+concat = Stream.of("a", "B", "c", "D", "e", "F").
+ filter(x -> x.compareTo("Z") > 0).
+ reduce("", String::concat);
+```
+
+上面代码例如第一个示例的 reduce()，第一个参数（空白字符）即为起始值，第二个参数（String::concat）为 BinaryOperator。这类有起始值的 reduce() 都返回具体的对象。而对于第四个示例没有起始值的 reduce()，由于可能没有足够的元素，返回的是 Optional，请留意这个区别。
+
+## 并行流
+
+Stream有串行和并行两种，串行Stream上的操作是在一个线程中依次完成，而并行Stream则是在多个线程上同时执行。
+
+**举例：**
+
+首先我们创建一个没有重复元素的大表：
+
+```
+int max = 1000000;
+List<String> values = new ArrayList<>(max);
+for (int i = 0; i < max; i++) {
+    UUID uuid = UUID.randomUUID();
+    values.add(uuid.toString());
+}
+```
+
+我们分别用串行和并行两种方式对其进行排序，最后看看所用时间的对比。
+
+### Sequential Sort(串行排序)
+
+```java
+//串行排序
+long t0 = System.nanoTime();
+long count = values.stream().sorted().count();
+System.out.println(count);
+
+long t1 = System.nanoTime();
+
+long millis = TimeUnit.NANOSECONDS.toMillis(t1 - t0);
+System.out.println(String.format("sequential sort took: %d ms", millis));
+```
+
+输出：
+
+```
+1000000
+sequential sort took: 709 ms//串行排序所用的时间
+```
+
+### Parallel Sort(并行排序)
+
+```java
+//并行排序
+long t0 = System.nanoTime();
+
+long count = values.parallelStream().sorted().count();
+System.out.println(count);
+
+long t1 = System.nanoTime();
+
+long millis = TimeUnit.NANOSECONDS.toMillis(t1 - t0);
+System.out.println(String.format("parallel sort took: %d ms", millis));
+
+```
+
+输出：
+
+```
+1000000
+parallel sort took: 475 ms//串行排序所用的时间
+```
+
+唯一需要做的改动就是将 `stream()` 改为`parallelStream()`。
+
+**举例：平行求和**
+
+```java
+public static long parallelSum(long n) {
+
+	return Stream.iterate(1L,i->i+1)
+							 .limit(n)
+							 .parallel() // 将流转换为并行流
+							 .reduce(0L,Long::sum);
+}
+```
+
+执行过程，如图所示：
+
+![](../../image/Java8_parallelstream.png)
+
+Stream在内部分成了几块，因此可以对不同的块独立并行进行归纳操作。
+
+同一个归纳操作会将各个子流的部分归纳结果合并起来，得到整个原始流的归纳结果。
+
+tips：在现实中，对顺序流调用parallel方法并不意味着流本身有任何实际的变化。它在内部实际上就是设了一个boolean标志，表示你想让调用parallel之后进行的所有操作都并行执行。
+
