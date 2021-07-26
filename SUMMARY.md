@@ -12,5 +12,5 @@
 * [红黑树](javaalgorithm/structure/红黑树.md)
 * [redis集群的高可用](redis/redis集群的高可用.md)
 * [Stream流](javabase/jdk1.8/Stream.md)
-* [用流收集数据](javabase/jdk1.8/collectdatabystream.md)
+* [Optional的使用](javabase/jdk1.8/Optional的使用.md)
 
